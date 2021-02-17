@@ -44,11 +44,11 @@ const Header = () => {
                     `}
                     />
 
-                    <div css={css`
+                    <h3 css={css`
                         margin-left: 10px;
                     `}>
                         힝구월드
-                </div>
+                    </h3>
                 </HeaderBanner>
             </Link>
 
