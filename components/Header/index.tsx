@@ -4,15 +4,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import { jsx, css } from '@emotion/react';
+import { svg } from '../../res';
+import { Colors } from '../../styles';
 
 const HeaderContainer = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
+    position: relative;
+    width: 135px;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;
 
 const Logo = styled.img`
@@ -27,39 +29,57 @@ const HeaderBanner = styled.div`
     width: 100%;
     height: 50px;
     cursor: pointer;
-`
+`;
+
+const HeaderNavi = styled.div`
+    position: relative;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    margin: 15px 0;
+
+    &:hover {
+        background-color: ${Colors.dark100};
+    }
+`;
+
+const css_svg_fill = css`
+    path {
+        fill: ${Colors.dark200};
+    }
+`;
 
 const Header = () => {
     return (
         <HeaderContainer>
             <Link href={'/'}>
-                <HeaderBanner>
-                    <Logo
-                        src={'/res/img/hingming.png'}
-                        alt={''}
-                        width={50}
-                        height={50}
-                        css={css`
-                    
-                    `}
-                    />
-
-                    <h3 css={css`
-                        margin-left: 10px;
-                    `}>
-                        힝구월드
-                    </h3>
-                </HeaderBanner>
+                <HeaderNavi>
+                    {<svg.home_fill css={css_svg_fill} />}
+                </HeaderNavi>
             </Link>
-
-            <div css={css`
-                margin: 0 10px;
-                display: inline-block;
-            `}>
-                <Link href={'/calender'}>
-                    <a>달력 보기</a>
-                </Link>
-            </div>
+            <Link href={'/calendar'}>
+                <HeaderNavi>
+                    {<svg.calendar_fill css={css_svg_fill} />}
+                </HeaderNavi>
+            </Link>
+            <Link href={'/customer'}>
+                <HeaderNavi>
+                    {<svg.user_fill css={css_svg_fill} />}
+                </HeaderNavi>
+            </Link>
+            <Link href={'/messages'}>
+                <HeaderNavi>
+                    {<svg.message_fill css={css_svg_fill} />}
+                </HeaderNavi>
+            </Link>
+            <Link href={'/'}>
+                <HeaderNavi>
+                    {<svg.info_fill css={css_svg_fill} />}
+                </HeaderNavi>
+            </Link>
         </HeaderContainer>
     )
 }

@@ -23,6 +23,7 @@
     "**/*.ts",
     "**/*.tsx",
     "***/**/*.tsx",
+    "*/index.d.ts"
 ],
   "exclude": [
     "node_modules"
